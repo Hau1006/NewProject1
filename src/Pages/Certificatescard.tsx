@@ -1,6 +1,13 @@
 import React, { FC } from "react";
 import Card from "../components/Card/index";
-const certificates = [
+import "./Certificatescard.scss";
+interface CardProps {
+  id: string;
+  title: string;
+  platform: string;
+  date: string;
+}
+const certificates: CardProps[] = [
   {
     id: "01",
     title: "Python 3 Master Course for 2021",
@@ -51,26 +58,40 @@ const certificates = [
   },
 ];
 
-// const bgColors = [
-//   "#F0FAFF", // Very Light Blue
-//   "#F7FDFA", // Very Light Green
-//   "#F5F2FF", // Very Light Purple
-//   "#FFF1F1", // Very Light Pink
-//   "#FEFFED", // Very Light Yellow
-// ];
+const bgColors = [
+  "#F0FAFF", // Very Light Blue
+  "#F7FDFA", // Very Light Green
+  "#F5F2FF", // Very Light Purple
+  "#FFF1F1", // Very Light Pink
+  "#FEFFED", // Very Light Yellow
+];
+const combineCertificationWithColors = (
+  certificates: CardProps[],
+  bgColors: string[]
+) => {
+  return certificates.map((certificate, i) => ({
+    ...certificate,
+    color: bgColors[i % bgColors.length],
+  }));
+};
+const CertificationWithColors = combineCertificationWithColors(
+  certificates,
+  bgColors
+);
 
 const Certificatescard: FC = () => {
   return (
     <>
       <div className="container">
         <h1 className="main-title">Certification</h1>
-        {certificates.map((certificate) => (
+        {CertificationWithColors.map((certificate) => (
           <Card
             key={certificate.id}
             id={certificate.id}
             title={certificate.title}
             platform={certificate.platform}
             date={certificate.date}
+            color={certificate.color}
           />
         ))}
       </div>
