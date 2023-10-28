@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Card from "../components/Card/index";
 import "./Certificatescard.scss";
 interface CardProps {

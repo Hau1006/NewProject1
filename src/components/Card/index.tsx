@@ -1,11 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./Card.scss";
 interface CardProps {
   id: string;
   title: string;
   platform: string;
   date: string;
-  color: string;
+  color?: string;
 }
 
 const index: FC<CardProps> = ({ id, title, platform, date, color }) => {
